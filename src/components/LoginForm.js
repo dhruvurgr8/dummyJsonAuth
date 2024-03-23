@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import "./loginform.css";
 import { TokenContext } from "../App";
 const LoginForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({});
   const { token, setToken } = useContext(TokenContext);
   //   const [data, setData] = useState("");
@@ -20,7 +19,6 @@ const LoginForm = () => {
     console.log(formData);
   };
   useEffect(() => {
-    setIsLoading(true);
     const fetchData = async () => {
       try {
         if (userData.username && userData.password) {
@@ -38,10 +36,9 @@ const LoginForm = () => {
           } else {
             const data = await response.json();
             setToken(data.token);
-            console.log(data.email);
+
             localStorage.setItem("token", data.token);
             localStorage.setItem("id", data.id);
-            setIsLoading(false);
           }
 
           //   setData(response);
@@ -62,9 +59,7 @@ const LoginForm = () => {
 
           <label>Enter Password:</label>
           <input type="password" name="password" placeholder="Enter Password" />
-          <button disabled={!isLoading} className="login">
-            Login
-          </button>
+          <button className="login">Login</button>
         </form>
       </div>
     </>

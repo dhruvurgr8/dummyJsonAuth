@@ -1,13 +1,9 @@
 import { createContext, useState } from "react";
 import LoginForm from "./components/LoginForm";
 import ProfilePage from "./components/profilePage";
-const user = {
-  username: "kminchelle",
-  password: "0lelplR",
-};
+
 export const TokenContext = createContext();
 function App() {
-  console.log(user);
   const [token, setToken] = useState("");
   const localToken = localStorage.getItem("token");
   const handleClick = () => {
@@ -22,6 +18,7 @@ function App() {
         {!localToken && <LoginForm />}
         {localToken && <ProfilePage />}
       </TokenContext.Provider>
+      <button onClick={handleClick}>ClearToken</button>
     </>
   );
 }

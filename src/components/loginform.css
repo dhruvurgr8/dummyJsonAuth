@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  input {
+    width: 400px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+  }
+  .login {
+    width: 100px;
+    padding: 10px 30px;
+    border: 2px solid orange;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 0 auto 0 auto;
+    text-align: center;
+  }
+}
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+h1 {
+  text-align: center;
+}
+.basic-info {
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  p {
+    padding: 5px;
+  }
+}

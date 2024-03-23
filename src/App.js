@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { createContext, useState } from "react";
+import LoginForm from "./components/LoginForm";
+import ProfilePage from "./components/profilePage";
+const user = {
+  username: "kminchelle",
+  password: "0lelplR",
+};
+export const TokenContext = createContext();
 function App() {
+  console.log(user);
+  const [token, setToken] = useState("");
+  const localToken = localStorage.getItem("token");
+  const handleClick = () => {
+    console.log("token cleared");
+    localStorage.removeItem("token");
+    setToken("");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <TokenContext.Provider value={{ token, setToken }}>
+        {!localToken && <LoginForm />}
+        {localToken && <ProfilePage />}
+      </TokenContext.Provider>
+    </>
   );
 }
 
 export default App;
+//   const [data, setData] = useState("");
+// LOGIN DETAILS:
+// username: "kminchelle",
+//         password: "0lelplR",

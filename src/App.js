@@ -4,6 +4,7 @@ import ProfilePage from "./components/profilePage";
 
 export const TokenContext = createContext();
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
   const [token, setToken] = useState("");
   const localToken = localStorage.getItem("token");
   const handleClick = () => {
@@ -14,7 +15,9 @@ function App() {
 
   return (
     <>
-      <TokenContext.Provider value={{ token, setToken }}>
+      <TokenContext.Provider
+        value={{ token, setToken, isLoading, setIsLoading }}
+      >
         {!localToken && <LoginForm />}
         {localToken && <ProfilePage />}
       </TokenContext.Provider>
@@ -28,3 +31,4 @@ export default App;
 // LOGIN DETAILS:
 // username: "kminchelle",
 //         password: "0lelplR",
+// This is the final code

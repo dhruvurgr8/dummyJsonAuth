@@ -7,11 +7,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [token, setToken] = useState("");
   const localToken = localStorage.getItem("token");
-  const handleClick = () => {
-    console.log("token cleared");
-    localStorage.removeItem("token");
-    setToken("");
-  };
+  // const handleClick = () => {
+  //   console.log("token cleared");
+  //   localStorage.removeItem("token");
+  //   setToken("");
+  // };
 
   return (
     <>
@@ -21,7 +21,6 @@ function App() {
         {!localToken && <LoginForm />}
         {localToken && <ProfilePage />}
       </TokenContext.Provider>
-      <button onClick={handleClick}>ClearToken</button>
     </>
   );
 }
